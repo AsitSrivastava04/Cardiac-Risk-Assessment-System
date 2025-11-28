@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Registration Page</title>
+</head>
+<style>
+form
+{
+ width:40%;
+ background-color: rgba(255, 255, 255, 0.8);
+ padding: 30px;
+ border-radius: 20px;
+ border: 2px solid #baa9a9;
+ margin: auto;
+ position: relative;
+ top: 50px;
+ box-shadow: #baa9a9 0px 2px 10px 0px;
+ font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+fieldset
+{
+ border: 2px solid black;
+ border-radius: 5px;
+ padding: 10px;
+ margin-bottom: 20px;
+ background-color: rgba(225, 210, 210, 0.3);
+}
+
+
+
+input[type=text], input[type=email], input[type=password], input[type=tel], input[type=date], select 
+{
+ padding: 10px;
+ border: 2px solid #baa9a9;
+ border-radius: 5px;
+ box-sizing: border-box;
+ margin-top: 6px;
+ margin-bottom: 16px;
+}
+</style>
+<body>
+ <form method="post" action="http://127.0.0.1:3000/index.html">
+  <h1 style="text-align: center; color: rgb(0, 0, 0);">Registration Form</h1>
+
+
+  <fieldset draggable="false">
+   <label for="fname">First Name</label><br>
+   <input style="width: 100%;" type="text" name="fname" id="fname" placeholder="Enter Your First Name" ><br><br>
+   <label for="lname">Last Name</label><br>
+   <input style="width: 100%;" type="text" name="lname" id="lname" placeholder="Enter Your Last Name" ><br><br>
+   <label for="fathername">Father's Name</label><br>
+   <input style="width: 100%;" type="text" name="fathername" id="fathername" placeholder="Enter Your Father's Name" ><br><br>
+   <label for="email">Email:</label>
+   <input style="width: 100%; text-align: end;" type="email" name="email" id="email" placeholder=" @gmail.com" ><br><br>
+   Hobbies: &nbsp;
+   <input type="checkbox" name="hobbies" id="hobbies1" value="reading">
+   <label for="hobbies1">Singing</label>
+   <input type="checkbox" name="hobbies" id="hobbies2" value="dancing">
+   <label for="hobbies2">Dancing</label>
+   <input type="checkbox" name="hobbies" id="hobbies3" value="painting">
+   <label for="hobbies3">Painting</label>
+   <br><br>
+
+
+   <label for="password">Password</label><br>
+   <input style="width: 100%;" type="password" name="password" id="password" placeholder="Enter Your Password" type="hidden" >
+   <br><br>
+   <label for="rpassword">Re-Type Password</label><br>
+   <input style="width: 100%;" type="password" name="rpassword" id="rpassword" placeholder="Re-Type Your Password" ><br><br>
+
+
+   <label for="contact">Contact Number</label><br>
+   <input style="width: 100%;" type="tel" name="contact" id="contact" placeholder="Enter Your Contact Number" >
+   <br><br>
+   Gender : &nbsp;
+   <label for="male">Male</label>&nbsp;
+   <input type="radio" name="gender" id="male" value="male">
+   <label for="female">Female</label>&nbsp;
+   <input type="radio" name="gender" id="female" value="female"><br><br>
+   <br><br>
+   Branch : &nbsp;
+   <input type="radio" name="Branch" id="cs" value="CSE">
+   <label for="cs">CSE</label>&nbsp;
+   <input type="radio" name="Branch" id="CSE-DS" value="CSE-DS">&nbsp;
+   <label for="CSE-DS">CSE-DS</label>&nbsp;
+   <input type="radio" name="Branch" id="AI-ML" value="AI-ML">&nbsp;
+   <label for="AI-ML">AI/ML</label>&nbsp;<br><br>
+   <label for="dob">Date of Birth</label><br>
+   <input style="width: 100%;" type="date" name="dob" id="dob" >
+   </fieldset><br>
+   <fieldset>
+  <center> <b><a href="ttp://www.google.com">Terms and Conditions</a></b><br></center><br>
+  <input type="checkbox" name="terms" id="terms" >
+  <label for="terms"><b>I agree to the terms and conditions</b></label>
+  <br><br>
+   <input style="width: 100%; background-color: rgb(50, 221, 50);color: white; height: 40px;" type="submit" value="Register Now" class="btn">
+  </fieldset>
+ </form>
+ <script>
+document.querySelector('form').addEventListener('submit', function(event) {
+ // Validate Username (First Name)
+ var fname = document.getElementById('fname').value.trim();
+ var fnamePattern = /^[A-Za-z]{6,}$/;
+ if (!fnamePattern.test(fname)) {
+  alert("First Name should contain only alphabets and be at least 6 characters long.");
+  event.preventDefault();
+  return false;
+ }
+
+ // JS VALIDATION: 3. Email id (should not contain any invalid and must follow the standard pattern (name@domain.com))
+ var email = document.getElementById('email').value.trim();
+ var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+ if (!emailPattern.test(email)) {
+  alert("Email id should not contain any invalid characters and must follow the standard pattern (name@domain.com).");
+  event.preventDefault();
+  return false;
+ }
+
+ // JS VALIDATION: 4. Phone Number (Phone number should contain 10 digits only)
+ var phone = document.getElementById('contact').value.trim();
+ var phoneDigits = phone.replace(/\D/g, '');
+ if (phoneDigits.length !== 10) {
+  alert("Phone number should contain exactly 10 digits.");
+  event.preventDefault();
+  return false;
+ }
+
+ // Password Validation
+ var password = document.getElementById('password') ? document.getElementById('password').value : '';
+ if(password){
+  var passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[\W_]).{6,}$/;
+  if (!passwordPattern.test(password)) {
+   alert("Password must be at least 6 characters, include at least one letter, one digit and one special symbol.");
+   event.preventDefault();
+   return false;
+  }
+ }
+});
+</script>
+
+
+</body>
+</html>
